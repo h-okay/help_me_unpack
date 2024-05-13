@@ -26,17 +26,17 @@ func RequestNewData() Data {
 	logger.Printf("Making a request\n", logger.INFO)
 	resp, err := http.Get(URL)
 	if err != nil {
-		logger.Printf("Couldn't GET", logger.INFO, err.Error())
+		logger.Printf("Couldn't GET: %v", logger.INFO, err.Error())
 		os.Exit(1)
 	}
 
 	logger.Printf("Parsing JSON\n", logger.INFO)
 	var data Data
 	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
-		logger.Printf("Couldn't parse JSON", logger.INFO, err.Error())
+		logger.Printf("Couldn't parse JSON: %v", logger.INFO, err.Error())
 		os.Exit(1)
 	}
 
-	logger.Printf("Got the following data => %s", logger.INFO, data.String())
+	logger.Printf("Got the following data => %s\n", logger.INFO, data.String())
 	return data
 }
