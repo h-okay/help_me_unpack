@@ -16,7 +16,7 @@ func TestEncoding(t *testing.T) {
 				actual = encoding.Decode(tc.subject)
 			}
 			if tc.expected != actual {
-				t.Errorf("Encode(%q) = %#v, want: %#v", tc.subject, actual, tc.expected)
+				t.Errorf("%s(%q) = %#v, want: %#v", tc.String(), tc.subject, actual, tc.expected)
 			}
 		})
 	}

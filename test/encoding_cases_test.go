@@ -14,6 +14,17 @@ type encodingTest struct {
 	expected     string
 }
 
+func (et encodingTest) String() string {
+	switch et.encodingType {
+	case ENCODE:
+		return "Encide"
+	case DECODE:
+		return "Decode"
+	default:
+		return "Unknown"
+	}
+}
+
 var encodingTestCases = []encodingTest{
 	{
 		encodingType: ENCODE,
