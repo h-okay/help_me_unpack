@@ -10,14 +10,14 @@ const (
 type encodingTest struct {
 	encodingType encodingType
 	description  string
-	subject      string
-	expected     string
+	subject      []byte
+	expected     []byte
 }
 
-func (et encodingTest) String() string {
-	switch et.encodingType {
+func (et encodingType) String() string {
+	switch et {
 	case ENCODE:
-		return "Encide"
+		return "Encode"
 	case DECODE:
 		return "Decode"
 	default:
@@ -29,13 +29,13 @@ var encodingTestCases = []encodingTest{
 	{
 		encodingType: ENCODE,
 		description:  "encode",
-		subject:      "hello,world!",
-		expected:     "aGVsbG8sd29ybGQh",
+		subject:      []byte("hello,world!"),
+		expected:     []byte("aGVsbG8sd29ybGQh"),
 	},
 	{
 		encodingType: DECODE,
 		description:  "decode",
-		subject:      "aGVsbG8sd29ybGQh",
-		expected:     "hello,world!",
+		subject:      []byte("aGVsbG8sd29ybGQh"),
+		expected:     []byte("hello,world!"),
 	},
 }
