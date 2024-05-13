@@ -10,7 +10,7 @@ type unpackTest struct {
 	expected    unpack.UnpackedBytes
 }
 
-var testCases = []unpackTest{
+var unpackTestCases = []unpackTest{
 	{
 		description: "valid",
 		subject:     "ln8YhXNgYcqVyAAAcmoHQx7oia9MF1VAQFUXTK+J6B4=",
