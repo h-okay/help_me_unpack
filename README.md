@@ -38,8 +38,8 @@ make build
 make clean
 ```
 
-[!NOTE]
-If you don't want to install `make`, after setting the environment variable run:
+> [!NOTE]
+> If you don't want to install `make`, after setting the environment variable run:
 
 ```bash
 go run main.go
