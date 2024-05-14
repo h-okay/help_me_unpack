@@ -16,13 +16,13 @@ func TestEncoding(t *testing.T) {
 	}
 }
 
-func runTest(t *testing.T, encodingType encodingType, subject []byte) []byte {
+func runTest(t *testing.T, encodingType encodingType, subject string) []byte {
 	var actual []byte
 	var err error
 
 	switch encodingType {
 	case ENCODE:
-		actual, err = encoding.Encode(subject)
+		actual, err = encoding.Encode([]byte(subject))
 	case DECODE:
 		actual, err = encoding.Decode(subject)
 	}

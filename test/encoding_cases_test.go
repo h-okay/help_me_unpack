@@ -10,7 +10,7 @@ const (
 type encodingTest struct {
 	encodingType encodingType
 	description  string
-	subject      []byte
+	subject      string
 	expected     []byte
 }
 
@@ -29,13 +29,13 @@ var encodingTestCases = []encodingTest{
 	{
 		encodingType: ENCODE,
 		description:  "encode",
-		subject:      []byte("hello,world!"),
+		subject:      "hello,world!",
 		expected:     []byte("aGVsbG8sd29ybGQh"),
 	},
 	{
 		encodingType: DECODE,
 		description:  "decode",
-		subject:      []byte("aGVsbG8sd29ybGQh"),
+		subject:      "aGVsbG8sd29ybGQh",
 		expected:     []byte("hello,world!"),
 	},
 }

@@ -1,42 +1,53 @@
 package unpack
 
 import (
-	"encoding/json"
-	"fmt"
+	"bytes"
 	logger "help_me_unpack/log"
+	"io"
 	"net/http"
 	"os"
+	"time"
 )
 
-type Data struct {
-	Bytes string `json:"bytes"`
-}
+func Get(url string) []byte {
+	netClient := &http.Client{
+		Timeout: time.Second * 10,
+	}
 
-func (d Data) String() string {
-	return fmt.Sprintf("Bytes: %s", d.Bytes)
-}
-
-func RequestNewData() Data {
-
-	var URL = fmt.Sprintf(
-		"https://hackattic.com/challenges/help_me_unpack/problem?access_token=%s",
-		os.Getenv("ACCESS_TOKEN"),
-	)
-
-	logger.Printf("Making a request\n", logger.INFO)
-	resp, err := http.Get(URL)
+	logger.Printf("Making a GET request\n", logger.INFO)
+	resp, err := netClient.Get(url)
 	if err != nil {
-		logger.Printf("Couldn't GET: %v", logger.INFO, err.Error())
+		logger.Printf("Couldn't GET: %v", logger.WARNING, err.Error())
+		os.Exit(1)
+	}
+	defer resp.Body.Close()
+
+	logger.Printf("Parsing JSON from response body\n", logger.INFO)
+	bodyBytes, err2 := io.ReadAll(resp.Body)
+	if err2 != nil {
+		logger.Printf("Failed to read byte stream: %v", logger.ERROR, err.Error())
 		os.Exit(1)
 	}
 
-	logger.Printf("Parsing JSON\n", logger.INFO)
-	var data Data
-	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
-		logger.Printf("Couldn't parse JSON: %v", logger.INFO, err.Error())
-		os.Exit(1)
+	return bodyBytes
+}
+
+func Post(url string, data []byte) {
+	netClient := &http.Client{
+		Timeout: time.Second * 10,
 	}
 
-	logger.Printf("Got the following data => %s\n", logger.INFO, data.String())
-	return data
+	logger.Printf("Making a POST request\n", logger.INFO)
+	resp, err := netClient.Post(url, "application/json", bytes.NewReader(data))
+	if err != nil {
+		logger.Printf("Couldn't POST results: %v", logger.WARNING, err.Error())
+		os.Exit(1)
+	}
+	defer resp.Body.Close()
+
+	logger.Printf("Response Status: %s\n", logger.INFO, resp.Status)
+	logger.Printf("Response Headers: %s\n", logger.INFO, resp.Header)
+
+	body, _ := io.ReadAll(resp.Body)
+	logger.Printf("Response Body: %s\n", logger.INFO, string(body))
 }

@@ -10,17 +10,24 @@ import (
 var UnpackLengthError = "Invalid string to unpack: %s"
 
 type UnpackedBytes struct {
-	Integer         int32   `json:"integer,omitempty"`
-	UnsignedInteger uint32  `json:"unsigned_integer,omitempty"`
-	Short           int16   `json:"short,omitempty"`
-	Float           float64 `json:"float,omitempty"`
-	Double          float64 `json:"double,omitempty"`
-	BigEndianDouble float64 `json:"big___endian___double,omitempty"`
+	Integer         int32   `json:"int"`
+	UnsignedInteger uint32  `json:"uint"`
+	Short           int16   `json:"short"`
+	Float           float64 `json:"float"`
+	Double          float64 `json:"double"`
+	BigEndianDouble float64 `json:"big_endian_double"`
 }
 
 func (ub UnpackedBytes) String() string {
 	return fmt.Sprintf(
-		"Integer:%d, UnsignedInteger:%d, Short:%d, Float:%f, Double:%f, BigEndianDouble:%f",
+		`UnpackedBytes{
+			Integer:%d, 
+			UnsignedInteger:%d,
+			Short:%d,
+			Float:%f,
+			Double:%f,
+			BigEndianDouble:%f,
+		}`,
 		ub.Integer,
 		ub.UnsignedInteger,
 		ub.Short,
@@ -31,11 +38,11 @@ func (ub UnpackedBytes) String() string {
 }
 
 func Unpack(s string) (UnpackedBytes, error) {
-	if len(s) == 0 {
+	if s == "" {
 		return UnpackedBytes{}, fmt.Errorf(UnpackLengthError, s)
 	}
 
-	decoded, err := Decode([]byte(s))
+	decoded, err := Decode(s)
 	if err != nil {
 		return UnpackedBytes{}, err
 	}
@@ -66,6 +73,6 @@ func Unpack(s string) (UnpackedBytes, error) {
 		BigEndianDouble: bigEndianDouble,
 	}
 
-	logger.Printf("Unpack result: %s", logger.INFO, ub.String())
+	logger.Printf("Unpack result: %s\n", logger.INFO, ub.String())
 	return ub, nil
 }
