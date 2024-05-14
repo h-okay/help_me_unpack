@@ -13,6 +13,10 @@ func main() {
 	var GetPath = "/challenges/help_me_unpack/problem?access_token="
 	var PostPath = "/challenges/help_me_unpack/solve?access_token="
 	var token = os.Getenv("ACCESS_TOKEN")
+	if token == "" {
+		logger.Printf("ACCESS_TOKEN couldn't not be found\n", logger.ERROR)
+		os.Exit(1)
+	}
 
 	data := unpack.Get(fmt.Sprintf("%s%s%s", baseURL, GetPath, token))
 	bytesString, err := unpack.GetFieldFromJSON(data, "bytes")
