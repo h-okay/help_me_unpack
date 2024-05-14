@@ -38,7 +38,9 @@ make build
 make clean
 ```
 
-> [!NOTE]
+</br>
+
+> [!TIP]
 > If you don't want to install `make`, after setting the environment variable run:
 
 ```bash
