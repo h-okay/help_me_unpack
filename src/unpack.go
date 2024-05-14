@@ -7,8 +7,10 @@ import (
 	"math"
 )
 
+// UnpackLengthError thrown when string input is invalid
 var UnpackLengthError = "Invalid string to unpack: %s"
 
+// UnpackedBytes represents unpacked values
 type UnpackedBytes struct {
 	Integer         int32   `json:"int"`
 	UnsignedInteger uint32  `json:"uint"`
@@ -37,6 +39,7 @@ func (ub UnpackedBytes) String() string {
 	)
 }
 
+// Unpack builds an UnpackedBytes which stores the unpacked values from decoded string
 func Unpack(s string) (UnpackedBytes, error) {
 	if s == "" {
 		return UnpackedBytes{}, fmt.Errorf(UnpackLengthError, s)

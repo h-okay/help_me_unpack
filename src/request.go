@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// Get makes a GET request to url and returns the data
 func Get(url string) []byte {
 	netClient := &http.Client{
 		Timeout: time.Second * 10,
@@ -32,6 +33,7 @@ func Get(url string) []byte {
 	return bodyBytes
 }
 
+// Post makes a POST request to url
 func Post(url string, data []byte) {
 	netClient := &http.Client{
 		Timeout: time.Second * 10,

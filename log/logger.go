@@ -5,23 +5,28 @@ import (
 	"time"
 )
 
-type LogType int
+// Level is the log level
+type Level int
 
+// Allowed values for Level
 const (
-	INFO LogType = iota
+	INFO Level = iota
 	WARNING
 	ERROR
 )
 
-var TimeFormat = "2006-02-01T15:04:05Z"
+// Desired time format for log strings
+var timeFormat = "2006-02-01T15:04:05Z"
 
-func Printf(format string, logType LogType, args ...any) {
-	convertedLogType := convertLogType(logType)
-	format = fmt.Sprintf("%s [%s] %s", time.Now().Format(TimeFormat), convertedLogType, format)
+// Printf uses given timeFormat and arguments to construct a log string
+func Printf(format string, logLevel Level, args ...any) {
+	convertedLogType := convertLogType(logLevel)
+	format = fmt.Sprintf("%s [%s] %s", time.Now().Format(timeFormat), convertedLogType, format)
 	fmt.Printf(format, args...)
 }
 
-func convertLogType(logType LogType) string {
+// convertLogType converts log enums to string representations
+func convertLogType(logType Level) string {
 	switch logType {
 	case INFO:
 		return "INFO"

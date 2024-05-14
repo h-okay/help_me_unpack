@@ -9,12 +9,12 @@ import (
 )
 
 func main() {
-	var BASE_URL = "https://hackattic.com"
-	var GET_PATH = "/challenges/help_me_unpack/problem?access_token="
-	var POST_PATH = "/challenges/help_me_unpack/solve?access_token="
-	var TOKEN = os.Getenv("ACCESS_TOKEN")
+	var baseURL = "https://hackattic.com"
+	var GetPath = "/challenges/help_me_unpack/problem?access_token="
+	var PostPath = "/challenges/help_me_unpack/solve?access_token="
+	var token = os.Getenv("ACCESS_TOKEN")
 
-	data := unpack.Get(fmt.Sprintf("%s%s%s", BASE_URL, GET_PATH, TOKEN))
+	data := unpack.Get(fmt.Sprintf("%s%s%s", baseURL, GetPath, token))
 	bytesString, err := unpack.GetFieldFromJSON(data, "bytes")
 	if err != nil {
 		logger.Printf("Something went wrong: %v", logger.ERROR, err.Error())
@@ -31,5 +31,5 @@ func main() {
 		logger.Printf("Something went wrong: %v", logger.ERROR, err.Error())
 		os.Exit(1)
 	}
-	unpack.Post(fmt.Sprintf("%s%s%s", BASE_URL, POST_PATH, TOKEN), result)
+	unpack.Post(fmt.Sprintf("%s%s%s", baseURL, PostPath, token), result)
 }
