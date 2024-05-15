@@ -17,11 +17,15 @@ make test
 
 #### Format
 
+Uses [gofmt](https://pkg.go.dev/cmd/gofmt)
+
 ```bash
 make fmt
 ```
 
 #### Lint
+
+Uses [golint](https://pkg.go.dev/golang.org/x/lint/golint)
 
 ```bash
 make lint
@@ -29,11 +33,15 @@ make lint
 
 #### Vet
 
+Uses [go vet](https://pkg.go.dev/cmd/vet) and [shadow](https://pkg.go.dev/golang.org/x/tools/go/analysis/passes/shadow)
+
 ```bash
 make vet
 ```
 
 #### CI/CD
+
+Uses [golangci-lint](https://golangci-lint.run/)
 
 ```bash
 make ci
