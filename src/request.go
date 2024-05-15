@@ -23,7 +23,7 @@ func Get(url string) []byte {
 	}
 	defer resp.Body.Close()
 
-	logger.Printf("Parsing JSON from response body\n", logger.INFO)
+	logger.Printf("Reading byte stream from response body\n", logger.INFO)
 	bodyBytes, err2 := io.ReadAll(resp.Body)
 	if err2 != nil {
 		logger.Printf("Failed to read byte stream: %v", logger.ERROR, err.Error())
