@@ -9,10 +9,18 @@ Assuming you have `make` installed in your system and `ACCESS_TOKEN` environment
 > [!WARNING]
 > Not all functionality is tested. Doesn't support `.env`.
 
-### Test
+#### Test
 
 ```bash
 make test
+```
+
+#### Coverage
+
+Uses [go tool cover](https://pkg.go.dev/cmd/cover)
+
+```bash
+make cover
 ```
 
 #### Format
