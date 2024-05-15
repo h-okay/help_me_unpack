@@ -1,5 +1,8 @@
-.PHONY: fmt lint vet build run clean ci
+.PHONY: test fmt lint vet build run clean ci
 .DEFAULT_GOAL := build
+
+test:
+	go test ./test
 
 fmt:
 	go fmt ./...
@@ -18,7 +21,7 @@ build: ci
 	go build -o bin .
 
 run: build
-	./bin; $(MAKE) clean
+	./bin
 	
 clean: 
 	rm ./bin
