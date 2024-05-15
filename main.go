@@ -24,7 +24,7 @@ func main() {
 		logger.Printf("Something went wrong: %v", logger.ERROR, err.Error())
 		os.Exit(1)
 	}
-	unpacked, err := unpack.Unpack((bytesString))
+	unpacked, err := unpack.Unpack(bytesString)
 	if err != nil {
 		logger.Printf("Something went wrong: %v", logger.ERROR, err.Error())
 		os.Exit(1)
