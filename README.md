@@ -56,15 +56,15 @@ make clean
 > [!TIP]
 > If you don't want to install `make`, after setting the environment variable run:
 
-> ```bash
-> go run main.go
-> ```
+```bash
+go run main.go
+```
 
 > You can alo set the environment variable following way:
 
-> ```bash
-> ACCESS_TOKEN='your_token_here' go run main.go
-> ```
+```bash
+ACCESS_TOKEN='your_token_here' go run main.go
+```
 
 ## 🎉
 
