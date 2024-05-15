@@ -58,11 +58,7 @@ make clean
 
 ```bash
 go run main.go
-```
-
-> You can alo set the environment variable following way:
-
-```bash
+# You can alo set the environment variable following way
 ACCESS_TOKEN='your_token_here' go run main.go
 ```
 
