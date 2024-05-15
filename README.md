@@ -6,6 +6,16 @@ Receive bytes and extract some numbers from those bytes.
 
 Assuming you have `make` installed in your system and `ACCESS_TOKEN` environment variable is set.
 
+> [!WARN]
+> Not all functionality is tested.
+> Doesn't support `.env`.
+
+### Test the code
+
+```bash
+make test
+```
+
 #### Format the code
 
 ```bash
@@ -30,11 +40,15 @@ make vet
 make ci
 ```
 
-#### Build/Remove a binary
+#### Build a binary
 
 ```bash
 make build
-# OR
+```
+
+#### Remove the binary
+
+```bash
 make clean
 ```
 
