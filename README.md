@@ -6,7 +6,7 @@ Receive bytes and extract some numbers from those bytes.
 
 Assuming you have `make` installed in your system and `ACCESS_TOKEN` environment variable is set.
 
-> [!WARN]
+> [!WARNING]
 > Not all functionality is tested.
 > Doesn't support `.env`.
 
