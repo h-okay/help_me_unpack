@@ -7,34 +7,33 @@ Receive bytes and extract some numbers from those bytes.
 Assuming you have `make` installed in your system and `ACCESS_TOKEN` environment variable is set.
 
 > [!WARNING]
-> Not all functionality is tested.
-> Doesn't support `.env`.
+> Not all functionality is tested. Doesn't support `.env`.
 
-### Test the code
+### Test
 
 ```bash
 make test
 ```
 
-#### Format the code
+#### Format
 
 ```bash
 make fmt
 ```
 
-#### Lint the code
+#### Lint
 
 ```bash
 make lint
 ```
 
-#### Vet the code
+#### Vet
 
 ```bash
 make vet
 ```
 
-#### CI
+#### CI/CD
 
 ```bash
 make ci
@@ -57,9 +56,15 @@ make clean
 > [!TIP]
 > If you don't want to install `make`, after setting the environment variable run:
 
-```bash
-go run main.go
-```
+> ```bash
+> go run main.go
+> ```
+
+> You can alo set the environment variable following way:
+
+> ```bash
+> ACCESS_TOKEN='your_token_here' go run main.go
+> ```
 
 ## 🎉
 
