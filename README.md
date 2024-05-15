@@ -8,6 +8,16 @@ Assuming you have `make` installed in your system and `ACCESS_TOKEN` environment
 
 > [!WARNING]
 > Not all functionality is tested. Doesn't support `.env`.
+> | **Statement**    | **Coverage** |
+> | ---------------- | ------------ |
+> | Encode           | 66.7%        |
+> | Decode           | 71.4%        |
+> | GetFieldFromJSON | 0.0%         |
+> | Get              | 0.0%         |
+> | Post             | 0.0%         |
+> | String           | 100.0%       |
+> | Unpack           | 88.2%        |
+> | total:           | 39.7%        |
 
 #### Test
 
